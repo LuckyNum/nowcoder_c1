@@ -97,6 +97,12 @@ def demo_list():
     listaa.append(4)
     print 15, listaa
 
+def add(a, b):
+    return a + b
+
+def sub(a, b):
+    return a - b
+
 def demo_dict():
     dicta = {1:1, 2:2, 3:3}
     print 1, dicta
@@ -104,6 +110,26 @@ def demo_dict():
     print 3, dicta.has_key(1), dicta.has_key('3')
     for key, value in dicta.items():
         print 'key-value:', key, value
+    dictb = {'+': add, '-': sub}
+    print 4, dictb['+'](1, 2)
+    print 5, dictb.get('-')(1, 2)
+    dictb['*'] = 'x'
+    print 6, dictb
+    dicta.pop(3)
+    print 7, dicta
+
+def demo_set():
+    seta = set([1, 2, 3])
+    setb = set((2, 3, 4))
+    # print 1, seta
+    # seta.add(4)
+    print 2, seta
+    print 3, seta.intersection(setb), seta & setb
+    print 4, seta | setb, seta.union(setb)
+    print 5, seta - setb
+    seta.add('x')
+    print 6, seta
+    print 7, seta.__len__()
 
 if __name__ == '__main__':
     # print 'hello world'
@@ -113,4 +139,5 @@ if __name__ == '__main__':
     # demo_buildinfunction()
     # demo_controlflow()
     # demo_list()
-    demo_dict()
+    # demo_dict()
+    demo_set()
