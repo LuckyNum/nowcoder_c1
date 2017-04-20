@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>个人文件</title>
+    <link ref="stylesheet" type="text/css" href="../static/main.css"/>
+</head>
+<body>
+    <h1>Profile</h1>
+    <br>
+    Profile:{{ uid }}
+    <br>
+{% for i in range(0, 5): %}
+profile: i <br>
+{% endfor %}
+{# 注释 #}
+
+#for color in colors
+{{color}} <br>
+#endfor
+
+{% for color in colors %}
+{{loop.index}}:{{color}} <br>
+{% endfor %}
+
+{% filter upper %}
+{% for k, v in dicts.items(): %}
+    {{k }}:{{v }}<br>
+{% endfor %}
+{% endfilter %}
+
+{% macro render_color(color) %}
+    <div style="border: 1px solid red;">This is color:{{color}}</div><br>
+    {{ caller() }}
+{% endmacro %}
+
+{% for color in colors %}
+    {% call render_color(color) %}
+        <!--Block-->
+    {% endcall %}
+{% endfor %}
+
+</body>
+</html>
